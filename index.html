@@ -8,10 +8,17 @@
     <h1>Sending a Message to LINE...</h1>
 
     <script>
+        // LINE公式アカウントのURLを設定します（このURLは適切なものに変更してください）
+        const officialLineUrl = 'https://lin.ee/ySxY1lP';
+
+        function navigateToOfficialLine() {
+            window.location.href = officialLineUrl;
+        }
+
         function sendMessage() {
             const text = "受付\n受付コード3152";
 
-            liff.init({ liffId: '1661243127-axMZD1jy' }, () => {
+            liff.init({ liffId: '1661243127-QOkqmoAD' }, () => {
                 if (liff.isLoggedIn()) {
                     liff.sendMessages([{ type: 'text', text }]).then(() => {
                         console.log('Message sent');
@@ -24,7 +31,8 @@
             }, err => console.error(err));
         }
 
-        // すぐにsendMessage関数を呼び出す
+        // 先に特定の公式ラインに遷移し、その上でsendMessage関数を呼び出す
+        navigateToOfficialLine();
         sendMessage();
     </script>
 </body>
